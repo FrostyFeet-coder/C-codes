@@ -1,3 +1,8 @@
+#include <unordered_map>
+#include <list>
+#include <map>
+using namespace std;
+
 class LFUCache {
 private:
     int capacity; // cache ki maximum capacity
