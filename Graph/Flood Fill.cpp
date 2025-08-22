@@ -1,3 +1,6 @@
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     // DFS function jo recursively connected cells ko fill karega
