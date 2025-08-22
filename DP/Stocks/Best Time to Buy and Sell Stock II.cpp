@@ -5,6 +5,49 @@ using namespace std;
 
 class Solution {
 public:
+    int maxProfit(vector<int>& prices) {
+        int ans = 0;  // Final profit store karne ke liye
+
+        // Hum loop day 1 (index = 1) se last day tak chalayenge
+        // Kyunki hamesha pichle din ka price (prices[i-1]) dekhna hai
+        for (int i = 1; i < prices.size(); i++) {
+
+            // Agar aaj ka price kal se zyada hai
+            // iska matlab simple hai:
+            // -> Kal buy karo (prices[i-1] par)
+            // -> Aaj sell karo (prices[i] par)
+            // aur profit banega (prices[i] - prices[i-1])
+
+            // Example: prices = [1, 2]
+            // Kal=1, Aaj=2 → profit = 1
+            if (prices[i] > prices[i - 1]) {
+                ans += prices[i] - prices[i - 1]; 
+            }
+        }
+
+        // Yaha ek important baat hai:
+        // Yeh greedy logic kaise kaam karta hai?
+        //
+        // Humne har chhoti increasing slope ka profit collect kiya hai.
+        // Agar array = [1, 2, 3]
+        // Profit calculation:
+        //   1→2 = 1
+        //   2→3 = 1
+        //   Total = 2
+        // Jo same hai as 1→3 (profit = 2).
+        //
+        // Matlab har increasing segment ko tod tod kar lene se
+        // total profit same aata hai as ek single buy-sell transaction.
+        // Isi wajah se greedy kaam karta hai.
+
+        // Final total profit return kar do
+        return ans;
+    }
+};
+
+
+class Solution {
+public:
     // Recursive function jo max profit nikalta hai
     // prices = stock prices array
     // index = abhi hum kis din par khade hain
