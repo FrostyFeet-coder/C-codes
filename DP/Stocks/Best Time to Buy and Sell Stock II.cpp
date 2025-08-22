@@ -45,6 +45,21 @@ public:
     }
 };
 
+// ⏱️ Time Complexity:
+
+// Loop ek hi baar chalta hai from 1 → n-1.
+
+// Har iteration me sirf constant kaam (if check + subtraction).
+
+// 👉 Time = O(n)
+
+// 💾 Space Complexity:
+
+// Sirf ek variable ans use hua hai.
+
+// No extra space, no recursion.
+
+// 👉 Space = O(1)
 
 class Solution {
 public:
@@ -108,3 +123,26 @@ public:
         return solve(prices, 0, true, n, dp);
     }
 };
+
+
+// ⏱️ Time Complexity:
+
+// Har state (index, canbuy) ek hi baar compute hota hai.
+
+// index maximum n values lega (0 → n-1).
+
+// canbuy ke 2 states hote hain (true/false).
+
+// Total states = n * 2.
+
+// Har state me O(1) kaam hota hai (max aur addition).
+
+// 👉 Time = O(n * 2) ≈ O(n)
+
+// 💾 Space Complexity:
+
+// dp table = O(n * 2) = O(n).
+
+// Recursion stack bhi O(n) depth tak jaa sakta hai.
+
+// 👉 Space = O(n) + O(n) = O(n)
