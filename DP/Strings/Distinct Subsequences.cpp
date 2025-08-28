@@ -100,3 +100,29 @@
             return solve(s, n - 1, t, m - 1, dp);
         }
     
+
+
+    int numDistinct(string s, string t) {
+        int n = s.size(), m = t.size();
+
+        // prev array banaya, size m+1, sabko 0 se initialize kiya
+        vector<unsigned long long> prev(m + 1, 0);
+
+        // Base case: jab t empty ho, ek hi subsequence possible hai (empty string)
+        prev[0] = 1;
+
+        // s ke har character ke liye loop chalao
+        for (int i = 1; i <= n; i++) {
+            // t ke har character ke liye ulte order me loop chalao
+            for (int j = m; j >= 1; j--) {
+                // Agar s ka current character t ke current character ke barabar hai
+                if (s[i - 1] == t[j - 1]) {
+                    // Dono ko include karne ka tarika + skip karne ka tarika
+                    prev[j] = prev[j - 1] + prev[j];
+                }
+                // Agar match nahi hua toh kuch nahi karna, prev[j] same rahega
+            }
+        }
+        // Final answer prev[m] me hoga
+        return prev[m];
+    }
