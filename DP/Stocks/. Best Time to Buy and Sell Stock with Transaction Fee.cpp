@@ -102,4 +102,3 @@ public:
         return sell; // final profit is when we have sold
     }
 };
-// ================================================
